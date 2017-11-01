@@ -28,25 +28,23 @@ read the DEVELOPERS.rst document in the root of the source code tree.
 
 Free, open source, and all that good stuff.
 
-Note:
+Note
 
-    Based on pexpect-4.2.1 version to modified  - jinlong.
+    Based on pexpect-4.2.1 version to modified.
 
-Modify the following:
+Modify the following::
 
-```
-def _log(self, s, direction):
-    # NOTE(because send and read is repetition, only record read info to
-    # logfile. - by jinlong )
-    if self.logfile is not None and direction == 'read':
-        self.logfile.write(s)
-        self.logfile.flush()
-    second_log = self.logfile_send \
-        if (direction == 'send') else self.logfile_read
-    if second_log is not None:
-        second_log.write(s)
-        second_log.flush()
-```
+    def _log(self, s, direction):
+        # NOTE(because send and read is repetition, only record read info to
+        # logfile. - by jinlong )
+        if self.logfile is not None and direction == 'read':
+            self.logfile.write(s)
+            self.logfile.flush()
+        second_log = self.logfile_send \
+            if (direction == 'send') else self.logfile_read
+        if second_log is not None:
+            second_log.write(s)
+            second_log.flush()
 
 You can install Pexpect using pip::
 
