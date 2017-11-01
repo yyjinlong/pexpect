@@ -122,7 +122,8 @@ class SpawnBase(object):
         if self.logfile is not None and direction == 'read':
             self.logfile.write(s)
             self.logfile.flush()
-        second_log = self.logfile_send if (direction == 'send') else self.logfile_read
+        second_log = self.logfile_send \
+            if (direction == 'send') else self.logfile_read
         if second_log is not None:
             second_log.write(s)
             second_log.flush()
@@ -143,7 +144,8 @@ class SpawnBase(object):
     def read_nonblocking(self, size=1, timeout=None):
         """This reads data from the file descriptor.
 
-        This is a simple implementation suitable for a regular file. Subclasses using ptys or pipes should override it.
+        This is a simple implementation suitable for a regular file.
+        Subclasses using ptys or pipes should override it.
 
         The timeout parameter is ignored.
         """
@@ -309,7 +311,8 @@ class SpawnBase(object):
         On Python 3.4, or Python 3.3 with asyncio installed, passing
         ``async=True``  will make this return an :mod:`asyncio` coroutine,
         which you can yield from to get the same result that this method would
-        normally give directly. So, inside a coroutine, you can replace this code::
+        normally give directly.
+        So, inside a coroutine, you can replace this code::
 
             index = p.expect(patterns)
 
